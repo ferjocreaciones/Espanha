@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>España NFC</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #7A0000, #AA151B);
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+/* TARJETA */
+.card-fc {
+    position: relative;
+    width: 90%;
+    max-width: 320px;
+    height: 480px;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 30px rgba(255,204,0,0.6),
+        0 0 50px rgba(170,21,27,0.5);
+}
+
+/* FONDO */
+.card-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(170,21,27,0.95),
+            rgba(255,204,0,0.85)
+        ),
+
+        repeating-linear-gradient(
+            45deg,
+            #AA151B,
+            #AA151B 20px,
+            #F1BF00 20px,
+            #F1BF00 40px
+        );
+
+    z-index: 1;
+}
+
+/* EFECTO BANDERA */
+.card-bg::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(170,21,27,0.2) 25%,
+            rgba(241,191,0,0.18) 25%,
+            rgba(241,191,0,0.18) 75%,
+            rgba(170,21,27,0.2) 75%
+        );
+
+    z-index: 1;
+}
+
+/* IMAGEN JUGADOR */
+.card-player {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-height: 320px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+/* INFO */
+.card-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(0,0,0,0.9)
+    );
+
+    z-index: 3;
+}
+
+.card-name {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card-details {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.card-details span {
+    background: rgba(0,0,0,0.65);
+    padding: 5px 12px;
+    border-radius: 8px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* BOTONES */
+.btn {
+    display: block;
+    margin: 10px auto;
+    padding: 15px;
+    width: 90%;
+    max-width: 400px;
+
+    background: linear-gradient(
+        135deg,
+        #AA151B,
+        #F1BF00
+    );
+
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: linear-gradient(
+        135deg,
+        #8a1116,
+        #d8a900
+    );
+
+    transform: scale(1.03);
+}
+
+/* PREMIUM */
+.btn-premium {
+    display: block;
+    width: 90%;
+    max-width: 320px;
+    margin: 25px auto;
+    padding: 15px;
+
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+
+    color: #111;
+    text-decoration: none;
+    border-radius: 15px;
+
+    background: linear-gradient(
+        135deg,
+        #F1BF00,
+        #FFD700,
+        #AA151B,
+        #F1BF00
+    );
+
+    box-shadow:
+        0 0 15px rgba(241,191,0,0.5),
+        0 0 35px rgba(170,21,27,0.35);
+
+    transition: 0.3s;
+}
+
+.btn-premium:hover {
+    transform: scale(1.05);
+}
+
+/* SEPARADOR */
+.separador {
+    width: 100%;
+    height: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #AA151B,
+        #F1BF00,
+        #AA151B
+    );
+
+    margin: 25px 0;
+
+    border-radius: 4px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- TARJETA -->
+<div class="card-fc">
+
+    <div class="card-bg"></div>
+
+    <img id="player-img"
+         class="card-player"
+         src="yamal.jpg">
+
+    <div class="card-info">
+
+        <div class="card-name">
+            Lamine Yamal
+        </div>
+
+        <div class="card-details">
+            <span>DEL</span>
+            <span>19</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- BOTONES PREMIUM -->
+<div id="premium-container">
+
+    <a class="btn-premium"
+       href="https://www.instagram.com/lamineyamal/"
+       target="_blank">
+       ⭐ Instagram
+    </a>
+
+    <a class="btn-premium"
+       href="https://www.youtube.com/results?search_query=lamine+yamal+spain+skills"
+       target="_blank">
+       🎥 Highlights
+    </a>
+
+    <a class="btn-premium"
+       href="https://www.google.com/search?q=lamine+yamal+estadisticas"
+       target="_blank">
+       📊 Estadísticas
+    </a>
+
+</div>
+
+<div class="separador"></div>
+
+<a class="btn"
+   href="https://rfef.es/"
+   target="_blank">
+🌐 Sitio Oficial RFEF
+</a>
+
+<a class="btn"
+   href="https://www.youtube.com/@rfef"
+   target="_blank">
+▶️ YouTube Oficial
+</a>
+
+<a class="btn"
+   href="https://www.instagram.com/sefutbol/"
+   target="_blank">
+📸 Instagram Oficial
+</a>
+
+<a class="btn"
+   href="https://tickets.rfef.es/"
+   target="_blank">
+🎟️ Boletos
+</a>
+
+<div class="separador"></div>
+
+<a class="btn"
+   href="https://www.google.com/search?q=españa+proximo+partido"
+   target="_blank">
+📅 Próximo Partido
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=españa+calendario"
+   target="_blank">
+🗓️ Calendario
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=uefa+nations+league+tabla"
+   target="_blank">
+📊 Nations League
+</a>
+
+<div class="separador"></div>
+
+<a class="btn"
+   href="https://www.google.com/search?q=palmares+seleccion+española"
+   target="_blank">
+🏆 Palmarés
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=españa+vs+francia+historial"
+   target="_blank">
+⚔️ Rivalidades Históricas
+</a>
+
+<!-- MUNDIAL 2026 -->
+
+<div class="separador"></div>
+
+<a class="btn"
+   href="https://www.google.com/search?q=mundial+2026+calendario"
+   target="_blank">
+🌎 Mundial 2026 Calendario
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=mundial+2026+grupos"
+   target="_blank">
+🏟️ Grupos Mundial 2026
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=clasificacion+mundial+2026+uefa"
+   target="_blank">
+📊 Clasificación UEFA
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=españa+camino+al+mundial+2026"
+   target="_blank">
+🚀 Camino al Mundial
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=fifa+world+cup+2026"
+   target="_blank">
+🏆 FIFA World Cup 2026
+</a>
+
+<a class="btn"
+   href="https://www.google.com/search?q=noticias+mundial+2026"
+   target="_blank">
+📰 Noticias Mundial 2026
+</a>
+
+</div>
+
+</body>
+</html>
